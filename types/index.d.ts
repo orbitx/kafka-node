@@ -1,6 +1,14 @@
 import { Readable, Writable } from 'stream';
 import { EventEmitter } from 'events';
 
+export class Admin extends EventEmitter {
+  constructor(kafkaClient: KafkaClient);
+  listTopics(cb?: (err: any, res: any[]) => void): void;
+  listGroups(cb?: () => void): void;
+  describeGroups(consumerGroups: ConsumerGroup[], cb?: () => void): void;
+  createTopics(topics: string[], cb?: () => void): void;
+}
+
 export class KafkaClient extends EventEmitter {
   constructor (options?: KafkaClientOptions);
 
